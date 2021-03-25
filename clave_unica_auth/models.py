@@ -1,6 +1,10 @@
 from django.db import models
 from django.core.cache import cache
-from django.contrib.auth.models import User
+
+try:
+    from asapps.accounts.models import User
+except Exception as e:
+    from django.contrib.auth.models import User
 
 import uuid
 
