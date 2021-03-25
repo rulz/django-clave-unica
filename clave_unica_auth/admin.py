@@ -1,8 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.models import User
+from django.conf import settings
 
 from .models import Login, Person
+
+try:
+    User = settings.AUTH_USER_MODEL
+except Exception as e:
+    from django.contrib.auth.models import User
+
 
 admin.site.unregister(User)
 
